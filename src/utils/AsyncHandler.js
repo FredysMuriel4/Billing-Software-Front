@@ -1,7 +1,7 @@
 import TokenValidate from './../utils/TokenValidate'
 export default (fn,component) => {
   TokenValidate(component).then((b) => {
-    console.log(b)
+    b
   })
 
   Promise

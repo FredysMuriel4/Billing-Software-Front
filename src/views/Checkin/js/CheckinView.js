@@ -19,7 +19,8 @@ export default {
         name: '',
         nit: '',
       },
-      disabled:false
+      disabled:false,
+      loading: false
     }
   },
   components: {
@@ -57,24 +58,28 @@ export default {
 }
 
 async function sendCheckin(component){
+  component.loading = true;
   component.disabled = true;
   const user_session = JSON.parse(localStorage.getItem('user_token'));
 
   if(!component.transmitter.name || !component.transmitter.nit){
     showErrorMsg('Por favor rellenar los datos del Emisor');
     component.disabled = false;
+    component.loading = false;
     return
   }
 
   if(!component.receiver.name || !component.receiver.nit){
     showErrorMsg('Por favor rellenar los datos del Receptor');
     component.disabled = false;
+    component.loading = false;
     return
   }
 
   if(!component.items.length){
     showErrorMsg('Por favor agregue los Items de la factura');
     component.disabled = false;
+    component.loading = false;
     return
   }
 
@@ -96,10 +101,12 @@ async function sendCheckin(component){
   if(response.data.status != 200){
     showErrorMsg(response.data.error)
     component.disabled=false;
+    component.loading = false;
     return
   }
 
   showSuccessMsg(response.data.message)
   component.clearFields();
   component.disabled=false;
+  component.loading = false;
 }

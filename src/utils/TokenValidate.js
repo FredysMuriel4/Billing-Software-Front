@@ -7,7 +7,6 @@ export default async function TokenValidate(component) {
       'Authorization': `basic ${user_session ? user_session.token : 'token'}`
     }
   });
-  console.log(component.$route.name)
   if(response.data.status == 401 && component.$route.name !== 'Login'){
     await axios.post(`${process.env.VUE_APP_URL_BASE_API}api/log-out`, { 
       headers: {

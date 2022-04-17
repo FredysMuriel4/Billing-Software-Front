@@ -94,24 +94,28 @@ async function getInvoicesDataHandler(component){
 }
 
 async function updateCheckin(component){
+  component.loading = true;
   component.disabled = true;
   const user_session = JSON.parse(localStorage.getItem('user_token'));
 
   if(!component.transmitter.name || !component.transmitter.nit){
     showErrorMsg('Por favor rellenar los datos del Emisor');
     component.disabled = false;
+    component.loading = false;
     return
   }
 
   if(!component.receiver.name || !component.receiver.nit){
     showErrorMsg('Por favor rellenar los datos del Receptor');
     component.disabled = false;
+    component.loading = false;
     return
   }
 
   if(!component.items.length){
     showErrorMsg('Por favor agregue los Items de la factura');
     component.disabled = false;
+    component.loading = false;
     return
   }
 
@@ -124,8 +128,6 @@ async function updateCheckin(component){
     total : component.total
   }
 
-  console.log(data)
-
   let response = await axios.put(`${process.env.VUE_APP_URL_BASE_API}api/invoices/${component.$route.query.id}`, data, {
     headers: {
       'Authorization': `basic ${user_session.token}`
@@ -135,6 +137,7 @@ async function updateCheckin(component){
   if(response.data.status != 200){
     showErrorMsg(response.data.error)
     component.disabled=false;
+    component.loading = false;
     return
   }
 
@@ -142,4 +145,5 @@ async function updateCheckin(component){
   component.clearFields();
   await getInvoicesDataHandler(component)
   component.disabled=false;
+  component.loading = false;
 }

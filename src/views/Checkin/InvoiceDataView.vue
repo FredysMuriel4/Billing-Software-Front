@@ -1,10 +1,10 @@
 <template lang="js">
   <div>
-    <a-spin :spinning="loading">
     <v-header/>
     <div class="container-title">
       <h1 class="title">{{ $route.query.type == 'edit' ? 'Editar factura' : 'Ver factura' }}</h1>
     </div>
+    <a-spin :spinning="loading">
     <a-row class="row-container">
       <a-col :span="6">
         <h2>Emisor</h2>

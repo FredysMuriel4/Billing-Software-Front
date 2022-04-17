@@ -4,6 +4,7 @@
     <div class="container-title">
       <h1 class="title">Facturar</h1>
     </div>
+    <a-spin :spinning="loading">
     <a-row class="row-container">
       <a-col :span="6">
         <h2>Emisor</h2>
@@ -48,6 +49,7 @@
         <a-button @click="checkin" type="primary" :disabled="disabled" block>Guardar</a-button>
       </a-col>
     </a-row>
+    </a-spin>
   </div>
 </template>
 <script type="module" src="./js/CheckinView.js"/>

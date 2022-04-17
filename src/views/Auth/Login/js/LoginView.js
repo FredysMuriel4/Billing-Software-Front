@@ -9,8 +9,8 @@ import { h } from 'vue';
 export default {
   data() {
     return {
-      nit: '00000000',
-      password: 'secret',
+      nit: '',
+      password: '',
       error: false,
       errorMsg: 'Complete los campos'
     }
