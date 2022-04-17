@@ -1,24 +1,2 @@
-# facturacion
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Se debe crear en la raiz del proyecto, un archivo llamado .env, donde van a ir las variables de entorno, entre ellas VUE_APP_URL_BASE_API, la cual contiene la ruta del servidor en el que se encuentra el backend (antes de iniciar el proyecto).
